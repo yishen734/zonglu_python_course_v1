@@ -109,6 +109,7 @@ str = input("请输入：")
 print("你输入的内容是: ", str)
 ```
 
+
 ### 习题
 输入三个数，分别赋值给 value1, value2, value3。然后再把 value1，value2，value3 打印出来
 ```python
@@ -120,13 +121,13 @@ print(value2)
 print(value3)
 ```
 
-## Python 数据类型转换
+
+## 4. Python 数据类型转换
 有时候，我们需要对数据内置的类型进行转换，数据类型的转换，一般情况下你只需要将数据类型作为函数名即可。
 </br>
 Python 数据类型转换可以分为两种：
 </br>
 (1) 隐式类型转换 - 自动完成  
-</br>
 (2) 显式类型转换 - 需要使用类型函数来转换
 
 ```python
@@ -187,6 +188,7 @@ print(y)  # y 输出结果为 '2'
 print(z)  # z 输出结果为'3.0'
 ```
 
+
 ### 习题
 输入三个数，分别赋值给 value1, value2, value3。然后再把 value1，value2，value3 从 str 类型强转成 int 类型，分别赋值给 a，b， c
 ``` python
@@ -196,7 +198,8 @@ value3 = input("请输入第三个整数")
 a, b, c = int(value1), int(value2), int(value3)
 ```
 
-## 4. Python 的条件语句
+
+## 5. Python 的条件语句
 Python 条件语句是通过一条或多条语句的执行结果（True 或者 False）来决定执行的代码块。
 ![image](https://user-images.githubusercontent.com/70382342/212439046-208bbb84-78c8-48bd-bba3-c7386912c847.png)
 ```python
@@ -205,6 +208,7 @@ if 判断条件：
 else：
     执行语句……
 ```
+
 
 ### 例子
 ```python
@@ -217,6 +221,7 @@ else:
     print(name)              # 条件不成立时输出变量名称
 print(flag)
 ```
+
 
 ### 习题
 输入三个数，然后再输出三个数中最大的数作为结果
@@ -260,7 +265,7 @@ else:
 ```
 
 
-## 5. Python 的逻辑运算符 (and, or, not)
+## 6. Python 的逻辑运算符 (and, or, not)
 ```python
 num = 9
 if num >= 0 and num <= 10:    # 判断值是否在 0 ~ 10 之间
@@ -284,12 +289,12 @@ else:
 ```
 
 
-## 6. Python 里的循环语句 (for, while, do while, break, continue)
+## 7. Python 里的循环语句 (for, while)
 | 循环类型     |  描述                                             |   
 |  ---------  |  ------------------------------------------------ | 
 |  while 循环 |  在给定的判断条件为 true 时执行循环体，否则退出循环体  | 
 |  for 循环   |  重复执行语句                                       |
-|  嵌套循环    | 你可以在while循环体中嵌套for循环                    |
+|  嵌套循环    | 你可以在循环体中嵌套其他循环                         |
 
 ```python
 # While 循环
@@ -310,6 +315,20 @@ for index in range(len(fruits)):
     print ("当前水果:" + fruits[index])
 ```
 
+### 习题
+通过循环的方式把 26 个字母打印出来
+```
+my_string = "abcdefghijklmnopqrstuvwxyz"
+for char in string:
+    print(char)
+
+my_string = string.ascii_letters[:26]
+for char in string:
+    print(char)
+```
+
+
+## 8.循环控制语句 (break, continue)
 | 控制语句         |  描述                                                      |   
 |  ---------      |  ------------------------------------------------          | 
 |  break 语句     |  在语句块执行过程中终止循环，并且跳出整个循环                  | 
@@ -322,5 +341,13 @@ while (count < 10):
         break;
     print("count:" + count)
     count = count + 1
+print("Good bye")
+
+count = 0
+while (count < 10):
+    count = count + 1
+    if (count % 2 == 0):
+        continue;
+    print("count:" + count)
 print("Good bye")
 ```
