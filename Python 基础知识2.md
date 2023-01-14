@@ -225,7 +225,7 @@ print(flag)
 
 ### 习题
 输入三个数，然后再输出三个数中最大的数作为结果
-``` python
+```python
 value1 = input("请输入第一个整数")
 value2 = input("请输入第二个整数")
 value3 = input("请输入第三个整数")
@@ -317,7 +317,7 @@ for index in range(len(fruits)):
 
 ### 习题
 通过循环的方式把 26 个字母打印出来
-```
+```python
 my_string = "abcdefghijklmnopqrstuvwxyz"
 for char in string:
     print(char)
