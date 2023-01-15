@@ -17,40 +17,36 @@
 
 
 ```python
-a = 20
-b = 10
+a = 4
+b = 3
 
 # 加
 c = a + b
-print("c 的值为：" + c)
+print("c 的值为：%s" %c)
 
 # 减
 c = a - b
-print("c 的值为：" + c)
+print("c 的值为：%s" %c)
  
 # 乘
 c = a * b
-print("c 的值为：" + c)
+print("c 的值为：%s" %c)
 
 # 除
 c = a / b
-print("c 的值为：" + c)
+print("c 的值为：%s" %c)
  
 # 取模
 c = a % b
-print("c 的值为：" + c)
+print("c 的值为：%s" %c)
  
 # 幂
-a = 2
-b = 3
 c = a ** b 
-print("c 的值为：" + c)
+print("c 的值为：%s" %c)
 
 # 整除
-a = 10
-b = 4
 c = a // b 
-print("c 的值为：" + c)
+print("c 的值为：%s" %c)
 ```
 
 ## 2. Python 赋值运算符
@@ -66,41 +62,40 @@ print("c 的值为：" + c)
 |  //=         |  取整除赋值运算符   |	c //= a 等效于 c = c // a               | 
 
 ```python
-a = 20
-b = 10
+a = 2
+b = 3
  
 # 简单的赋值运算符
 c = a + b
-print("c 的值为：" + c)
+print("c 简单赋值运算后的值为：%s" %c)
 
 # 加法赋值运算符
 c += a
-print("c 的值为：" + c)
+print("c 加法赋值运算后的值为：%s" %c)
 
 # 减法赋值运算符
 c -= a
-print("c 的值为：" + c)
+print("c 减法赋值运算后的值为：%s" %c)
 
-# 减法赋值运算符
+# 乘法赋值运算符
 c *= a
-print("c 的值为：" + c)
+print("c 乘法赋值运算后的值为：%s" %c)
  
 # 除法赋值运算符
 c /= a 
-print("c 的值为：" + c)
+print("c 除法辅助运算后的值为：%s" %c)
 
 # 取模赋值运算符 
-c = 2
 c %= a
-print("c 的值为：" + c)
+print("c 取模赋值运算后的值为：%s" %c)
 
 # 幂赋值运算符
 c **= a
-print("c 的值为：" + c)
+print("c 幂赋值运算后的值为：%s" %c)
  
 # 取整除赋值运算符
 c //= a
-print("c 的值为：" + c)
+print("c 取整除赋值后的值为：%s" %c)
 ```
 
 ## 3. Python 的用户输入输出
@@ -110,16 +105,8 @@ print("你输入的内容是: ", str)
 ```
 
 
-### 习题
+### 习题 1
 输入三个数，分别赋值给 value1, value2, value3。然后再把 value1，value2，value3 打印出来
-```python
-value1 = input("请输入第一个整数")
-value2 = input("请输入第二个整数")
-value3 = input("请输入第三个整数")
-print(value1)
-print(value2)
-print(value3)
-```
 
 
 ## 4. Python 数据类型转换
@@ -189,14 +176,8 @@ print(z)  # z 输出结果为'3.0'
 ```
 
 
-### 习题
-输入三个数，分别赋值给 value1, value2, value3。然后再把 value1，value2，value3 从 str 类型强转成 int 类型，分别赋值给 a，b， c
-``` python
-value1 = input("请输入第一个整数")
-value2 = input("请输入第二个整数")
-value3 = input("请输入第三个整数")
-a, b, c = int(value1), int(value2), int(value3)
-```
+### 习题 2
+输入三个数，分别赋值给 value1, value2, value3。然后再把 value1，value2，value3 从 str 类型强转成 int 类型，分别赋值给 a，b， c， 并且打印出来
 
 
 ## 5. Python 的条件语句
@@ -223,21 +204,9 @@ print(flag)
 ```
 
 
-### 习题
+### 习题 3
 输入三个数，然后再输出三个数中最大的数作为结果
-```python
-value1 = input("请输入第一个整数")
-value2 = input("请输入第二个整数")
-value3 = input("请输入第三个整数")
-a, b, c = int(value1), int(value2), int(value3)
 
-max_value = a
-if b >= max_value:
-    max_value = b
-if c >= max_value:
-    max_value = c
-print(max_value)
-```
 
 ```python
 if 判断条件1:
@@ -289,6 +258,15 @@ else:
 ```
 
 
+### 习题 4
+编码一个年龄判断器: 即输入一个年龄
+(1) 如果年龄在 60 岁以及 60 岁以上，打印 “老年”
+(2) 如果年龄在 35 ~ 59 岁之间，打印 “中年”
+(3) 如果年龄在 18 ~ 34 岁之间，打印 “青年”
+(4) 如果年龄在 7 ~ 17 岁之间， 打印 "少年"
+(4) 否则打印 "儿童"
+
+
 ## 7. Python 里的循环语句 (for, while)
 | 循环类型     |  描述                                             |   
 |  ---------  |  ------------------------------------------------ | 
@@ -315,17 +293,8 @@ for index in range(len(fruits)):
     print ("当前水果:" + fruits[index])
 ```
 
-### 习题
+### 习题 5
 通过循环的方式把 26 个字母打印出来
-```python
-my_string = "abcdefghijklmnopqrstuvwxyz"
-for char in string:
-    print(char)
-
-my_string = string.ascii_letters[:26]
-for char in string:
-    print(char)
-```
 
 
 ## 8.循环控制语句 (break, continue)
@@ -339,15 +308,42 @@ count = 0
 while (count < 10):
     if (count == 5):
         break;
-    print("count:" + count)
+    print("count: %s" %count)
     count = count + 1
-print("Good bye")
 
 count = 0
 while (count < 10):
     count = count + 1
     if (count % 2 == 0):
         continue;
-    print("count:" + count)
-print("Good bye")
+    print("count: %s" %count)
 ```
+
+### 习题 6
+分别用 for 和 while 求 1 ~ 100 所有数的和
+
+
+# 习题 7：
+重复打印 M ⾏，每行 N 个星星
+比如: M = 5, N = 5
+*****
+*****
+*****
+*****
+*****
+
+
+### 习题 8：
+重复打印 M ⾏，第一行有 1 个 星星，然后后面每行的星星比上一行多一个
+比如: M = 5
+*
+**
+***
+****
+*****
+
+
+### 习题 9：
+输入任意一个正整数，求它是几位数
+比如: 30 是 2 位数， 300 是 3 位数
+
