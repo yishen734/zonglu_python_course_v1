@@ -255,6 +255,12 @@ if (num >= 0 and num <= 5) or (num >= 10 and num <= 15):
 else:
     print("B")
 # 输出结果: B
+
+num = 8
+if (not num >= 0):    
+    print("A")
+else:
+    print("B")
 ```
 
 
