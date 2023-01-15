@@ -164,7 +164,7 @@ w = float("4.2")
 print(x)  # x 输出结果为 1.0
 print(y)  # y 输出结果为 2.8
 print(z)  # z 输出结果为 3.0
-print(z)  # z 输出结果为 4.2
+print(w)  # w 输出结果为 4.2
 
 # str() 强制转换为字符串类型：
 x = str("s1")
