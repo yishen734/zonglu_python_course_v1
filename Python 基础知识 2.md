@@ -315,7 +315,7 @@ count = 0
 while (count < 10):
     if (count == 5):
         break;
-    print("count: %s" %count)
+    print("count: ", count)
     count = count + 1
 
 count = 0
@@ -323,7 +323,7 @@ while (count < 10):
     count = count + 1
     if (count % 2 == 0):
         continue;
-    print("count: %s" %count)
+     print("count: ", count)
 ```
 
 ### 习题 6
