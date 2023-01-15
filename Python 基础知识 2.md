@@ -284,7 +284,7 @@ else:
 # While 循环
 count = 0
 while (count < 5):
-    print("count:" + count)
+    print("count: ", count)
     count = count + 1
 print("Good bye")
 
@@ -296,6 +296,7 @@ for fruit in fruits:
 # For 循环 - 索引
 fruits = ['banana', 'apple',  'mango']
 for index in range(len(fruits)):
+    print ("index: ", index)
     print ("当前水果:" + fruits[index])
 ```
 
