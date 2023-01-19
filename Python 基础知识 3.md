@@ -21,7 +21,9 @@ Python 中主要有 8 种数据类型：
 
 ## List (列表)
 列表是最常用的 ```Python``` 数据类型，它可以作为一个方括号内的逗号分隔值出现。
+
 列表里面的元素是 ```有序的```， ```可以改变的```，并且```允许重复的```
+
 与此同时，列表元素是索引的，第一个元素的索引为 0，第二个为 1，以此类推
 
 创建一个列表，只要把逗号分隔的不同的数据项使用方括号括起来即可。如下所示：
@@ -32,7 +34,7 @@ list3 = ["a", "b", "c", "d"]
 ```
 
 ### 访问列表中的值
-```
+```python
 # 正向索引
 thislist = ["apple", "banana", "cherry"]
 print(thislist[1])
@@ -55,8 +57,8 @@ print(thislist[-4:-1])
 # 判断一个元素是否存在
 thislist = ["apple", "banana", "cherry"]
 if "apple" in thislist:
-  print("Yes, 'apple' is in the fruits list")
-```python
+    print("Yes, 'apple' is in the fruits list")
+```
 
 ### 获得列表的长度
 ```python
@@ -113,11 +115,11 @@ print(thislist)
 ```python
 thislist = ["apple", "banana", "cherry"]
 for x in thislist:
-  print(x)
+    print(x)
   
 thislist = ["apple", "banana", "cherry"]
 for i in range(len(thislist)):
-  print(thislist[i])
+    print(thislist[i])
 ```
 
 ### List Comprehension
@@ -140,6 +142,7 @@ print(newlist)
 
 ## Tuple (元组)
 元组里面的元素是 ```有序的```， ```可以改变的```，但```允许重复的```
+
 与此同时，元组元素是索引的，第一个元素的索引为 0，第二个为 1，以此类推
 
 
@@ -150,7 +153,7 @@ print(thistuple)
 ```
 
 ### 访问元组中的值
-```
+```python
 # 正向索引
 thistuple = ("apple", "banana", "cherry")
 print(thistuple[1])
@@ -173,13 +176,13 @@ print(thistuple[-4:-1])
 # 判断一个元素是否存在
 thistuple = ("apple", "banana", "cherry")
 if "apple" in thistuple:
-  print("Yes, 'apple' is in the fruits tuple")
+    print("Yes, 'apple' is in the fruits tuple")
 ```
 
 ### 更新元组
 元组是不可变的, 只可以先转化成为 list，进行改变，再转变回来。同时，我们还可以将多个元组进行拼接
 
-```
+```python
 # 先转化成为 list，进行改变，再转变回来
 thistuple = ("apple", "banana", "cherry")
 y = list(thistuple)
@@ -207,12 +210,12 @@ print(red)
 # 直接遍历，不通过索引
 thistuple = ("apple", "banana", "cherry")
 for x in thistuple:
-  print(x)
+    print(x)
  
 # 通过索引
 thistuple = ("apple", "banana", "cherry")
 for i in range(len(thistuple)):
-  print(thistuple[i])
+    print(thistuple[i])
 ```
 
 ### 元组的其他操作
@@ -222,6 +225,7 @@ for i in range(len(thistuple)):
 
 ## Set (集合)
 集合里面的元素是 ```无序的```， ```不可以改变的```，且```不可以重复的```
+
 由于集合是无序的，里面的元素没有索引
 
 ### 创建集合
@@ -231,11 +235,11 @@ print(thisset)
 ```
 
 ### 访问集合中的值
-```
+```python
 # 每一次的结果都可能不同
 thisset = {"apple", "banana", "cherry"}
 for x in thisset:
-  print(x)
+    print(x)
   
 # 由于集合无序，所以其元素没有索引，我们不可以通过索引对元素进行访问
 
@@ -245,7 +249,7 @@ print("banana" in thisset)
 ```
 
 ### 给集合添加元素
-```
+```python
 # 添加一个元素
 thisset = {"apple", "banana", "cherry"}
 thisset.add("orange")
@@ -259,7 +263,7 @@ print(thisset)
 ```
 
 ### 给集合移除元素
-```
+```python
 # 通过 remove 移除，如果不存在会报错
 thisset = {"apple", "banana", "cherry"}
 thisset.remove("banana")
@@ -286,7 +290,7 @@ print(thisset)
 # 每一次的结果都可能不同
 thisset = {"apple", "banana", "cherry"}
 for x in thisset:
-  print(x)
+    print(x)
 ```
 
 ### 集合的其他操作
@@ -296,9 +300,9 @@ for x in thisset:
 
 ## Dictionary (字典)
 字典里面的元素是 ```有序的```， ```可以改变的```，但```不可以重复的```
+
 字典里面的元素通过 ```Key``` 和 ```value``` 组成的 ```pair``` 来构成
 
-</br>
 ### 创建字典
 ```python
 thisdict = {
@@ -312,9 +316,9 @@ print(thisdict)
 ### 访问字典中的值
 ```python
 thisdict = {
-  "brand": "Ford",
-  "model": "Mustang",
-  "year": 1964
+    "brand": "Ford",
+    "model": "Mustang",
+    "year": 1964
 }
 
 # 通过 key 来访问的两种办法
@@ -323,9 +327,9 @@ x = thisdict.get("model")
 
 # 获得所有的 key
 car = {
-"brand": "Ford",
-"model": "Mustang",
-"year": 1964
+    "brand": "Ford",
+    "model": "Mustang",
+    "year": 1964
 }
 
 x = car.keys()
@@ -335,9 +339,9 @@ print(x)
 
 # 获得所有的 value
 car = {
-"brand": "Ford",
-"model": "Mustang",
-"year": 1964
+    "brand": "Ford",
+    "model": "Mustang",
+    "year": 1964
 }
 
 x = car.values()
@@ -347,9 +351,9 @@ print(x)
 
 # 获得所有的元素
 car = {
-"brand": "Ford",
-"model": "Mustang",
-"year": 1964
+    "brand": "Ford",
+    "model": "Mustang",
+    "year": 1964
 }
 
 x = car.items()
@@ -359,15 +363,15 @@ print(x)
 
 # 判断一个 key 是否存在
 if "model" in thisdict:
-  print("Yes, 'model' is one of the keys in the thisdict dictionary")
+    print("Yes, 'model' is one of the keys in the thisdict dictionary")
 ```
 
 ### 改变字典里面的内容
 ```python
 thisdict = {
-  "brand": "Ford",
-  "model": "Mustang",
-  "year": 1964
+    "brand": "Ford",
+    "model": "Mustang",
+    "year": 1964
 }
 thisdict["year"] = 2018
 ```
@@ -375,9 +379,9 @@ thisdict["year"] = 2018
 ### 给字典添加元素
 ```python
 thisdict = {
-  "brand": "Ford",
-  "model": "Mustang",
-  "year": 1964
+    "brand": "Ford",
+    "model": "Mustang",
+    "year": 1964
 }
 
 thisdict["color"] = "red"
@@ -385,11 +389,11 @@ print(thisdict)
 ```
 
 ### 给字典移除元素
-```
+```python
 thisdict = {
-  "brand": "Ford",
-  "model": "Mustang",
-  "year": 1964
+    "brand": "Ford",
+    "model": "Mustang",
+    "year": 1964
 }
 
 # 通过 pop
@@ -404,22 +408,22 @@ print(thisdict)
 ### 遍历一个字典
 ```python
 thisdict = {
-  "brand": "Ford",
-  "model": "Mustang",
-  "year": 1964
+    "brand": "Ford",
+    "model": "Mustang",
+    "year": 1964
 }
 
 # 遍历所有的 key
 for x in thisdict:
-  print(x)
+    print(x)
 
 # 遍历所有的 value
 for x in thisdict.values():
-  print(x)
+    print(x)
 
 # 遍历所有的 item
 for x, y in thisdict.items():
-  print(x, y)
+    print(x, y)
 ```
 
 ### 字典的其他操作
