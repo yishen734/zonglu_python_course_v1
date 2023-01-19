@@ -245,7 +245,6 @@ for i in range(len(thistuple)):
 ![image](https://user-images.githubusercontent.com/70382342/213334232-c9351a25-7360-413d-b754-7c403fc7666b.png)
 
 
-
 ## Set (集合)
 集合里面的元素是 ```无序的```， ```不可以改变的```，且```不可以重复的```
 
@@ -451,3 +450,33 @@ for x, y in thisdict.items():
 
 ### 字典的其他操作
 ![image](https://user-images.githubusercontent.com/70382342/213336048-32d07a64-92df-49fe-9c2a-ab2332d28939.png)
+
+
+## 习题 3
+```python
+dict_ = {
+    'python': 95,
+    'java': 99,
+    'c': 100
+}
+
+1. 求字典的长度
+2. 修改'java' 这个 key 对应的 value 值为 98
+3. 删除 c 这个key
+4. 增加一个key-value对，key 值为 php, value是 90
+5. 获取所有的 key 值，存储在列表 list_keys 里
+6. 获取所有的 value 值，存储在列表 list_values 里
+7. 判断 javascript 是否在字典中
+8. 获得字典里所有value 的和
+9. 获取字典里最大的 value
+10. 获取字典里最小的 value
+```
+
+## 习题 4
+小明，小刚去超市里购买水果
+
+小明购买了苹果，草莓，香蕉，一共花了89块钱，，小刚购买了葡萄，橘子，樱桃，一共花了 87 块钱
+
+请从上面的描述中提取数据，存储到字典中，可以根据姓名获取这个人购买的水果种类和总费用。
+
+以姓名做 key，value 仍然是字典
