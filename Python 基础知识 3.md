@@ -56,7 +56,7 @@ print(thislist[:4])
 thislist = ["apple", "banana", "cherry", "orange", "kiwi", "melon", "mango"]
 print(thislist[-4:-1])
 
-# 判断一个元素是否在列表里
+# 判断一个元素是否存在
 thislist = ["apple", "banana", "cherry"]
 if "apple" in thislist:
   print("Yes, 'apple' is in the fruits list")
@@ -141,3 +141,83 @@ print(newlist)
 ### 列表的其他操作
 ![image](https://user-images.githubusercontent.com/70382342/213333538-5b81f54d-34c2-4b68-b2c0-13b0db46729b.png)
 
+
+## Tuple (元组)
+元组里面的元素是 ```有序的```， ```可不以改变的```，但```允许重复的```
+与此同时，元组元素是索引的，第一个元素的索引为 0，第二个为 1，以此类推
+
+</br>
+### 创建元组
+```python
+thistuple = ("apple", "banana", "cherry")
+print(thistuple)
+```
+
+### 访问元组中的值
+```
+# 正向索引
+thistuple = ("apple", "banana", "cherry")
+print(thistuple[1])
+
+# 反向索引
+thistuple = ("apple", "banana", "cherry")
+print(thistuple[-1])
+
+# 范围性正向索引
+thistuple = ("apple", "banana", "cherry", "orange", "kiwi", "melon", "mango")
+print(thistuple[2:5])
+
+thistuple = ("apple", "banana", "cherry", "orange", "kiwi", "melon", "mango")
+print(thistuple[:4])
+
+# 范围性反向索引
+thistuple = ("apple", "banana", "cherry", "orange", "kiwi", "melon", "mango")
+print(thistuple[-4:-1])
+
+# 判断一个元素是否存在
+thistuple = ("apple", "banana", "cherry")
+if "apple" in thistuple:
+  print("Yes, 'apple' is in the fruits tuple")
+```
+
+### 更新元组
+元组是不可变的, 只可以先转化成为 list，进行改变，再转变回来。同时，我们还可以将多个元组进行拼接
+
+```
+# 先转化成为 list，进行改变，再转变回来
+thistuple = ("apple", "banana", "cherry")
+y = list(thistuple)
+y.append("orange")
+thistuple = tuple(y)
+
+# 把两个 tuple 进行拼接
+thistuple = ("apple", "banana", "cherry")
+y = ("orange",)
+thistuple += y
+```
+
+### 元组元素的解耦
+```python
+fruits = ("apple", "banana", "cherry")
+
+(green, yellow, red) = fruits
+print(green)
+print(yellow)
+print(red)
+```
+
+### 循环一个列表
+```python
+# 直接遍历，不通过索引
+thistuple = ("apple", "banana", "cherry")
+for x in thistuple:
+  print(x)
+ 
+# 通过索引
+thistuple = ("apple", "banana", "cherry")
+for i in range(len(thistuple)):
+  print(thistuple[i])
+```
+
+### 列表的其他操作
+![image](https://user-images.githubusercontent.com/70382342/213334232-c9351a25-7360-413d-b754-7c403fc7666b.png)
