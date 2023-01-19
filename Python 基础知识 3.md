@@ -27,7 +27,6 @@ Python 中主要有 8 种数据类型：
 列表里面的元素是 ```有序的```， ```可以改变的```，并且```允许重复的```
 与此同时，列表元素是索引的，第一个元素的索引为 0，第二个为 1，以此类推
 
-</br>
 创建一个列表，只要把逗号分隔的不同的数据项使用方括号括起来即可。如下所示：
 ```python
 list1 = ['physics', 'chemistry', 1997, 2000]
@@ -113,7 +112,7 @@ thislist.clear()
 print(thislist)
 ```
 
-### 循环一个列表
+### 遍历一个列表
 ```python
 thislist = ["apple", "banana", "cherry"]
 for x in thislist:
@@ -146,7 +145,7 @@ print(newlist)
 元组里面的元素是 ```有序的```， ```可以改变的```，但```允许重复的```
 与此同时，元组元素是索引的，第一个元素的索引为 0，第二个为 1，以此类推
 
-</br>
+
 ### 创建元组
 ```python
 thistuple = ("apple", "banana", "cherry")
@@ -206,7 +205,7 @@ print(yellow)
 print(red)
 ```
 
-### 循环一个元组
+### 遍历一个元组
 ```python
 # 直接遍历，不通过索引
 thistuple = ("apple", "banana", "cherry")
@@ -224,14 +223,10 @@ for i in range(len(thistuple)):
 
 
 
-
-
-
 ## Set (集合)
 集合里面的元素是 ```无序的```， ```不可以改变的```，且```不可以重复的```
 由于集合是无序的，里面的元素没有索引
 
-</br>
 ### 创建集合
 ```python
 thisset = {"apple", "banana", "cherry"}
@@ -289,7 +284,7 @@ del thisset
 print(thisset)
 ```
 
-### 循环一个集合
+### 遍历一个集合
 ```python
 # 每一次的结果都可能不同
 thisset = {"apple", "banana", "cherry"}
@@ -300,3 +295,135 @@ for x in thisset:
 ### 集合的其他操作
 ![image](https://user-images.githubusercontent.com/70382342/213335038-57858b7b-1500-430f-aa42-e8fa1d90edf9.png)
 
+
+
+## Dictionary (字典)
+字典里面的元素是 ```有序的```， ```可以改变的```，但```不可以重复的```
+字典里面的元素通过 ```Key``` 和 ```value``` 组成的 ```pair``` 来构成
+
+</br>
+### 创建字典
+```python
+thisdict = {
+    "brand": "Ford",
+    "model": "Mustang",
+    "year": 1964
+}
+print(thisdict)
+```
+
+### 访问字典中的值
+```python
+thisdict = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964
+}
+
+# 通过 key 来访问的两种办法
+x = thisdict["model"]
+x = thisdict.get("model")
+
+# 获得所有的 key
+car = {
+"brand": "Ford",
+"model": "Mustang",
+"year": 1964
+}
+
+x = car.keys()
+print(x)
+car["color"] = "white"
+print(x)
+
+# 获得所有的 value
+car = {
+"brand": "Ford",
+"model": "Mustang",
+"year": 1964
+}
+
+x = car.values()
+print(x)
+car["year"] = 2020
+print(x)
+
+# 获得所有的元素
+car = {
+"brand": "Ford",
+"model": "Mustang",
+"year": 1964
+}
+
+x = car.items()
+print(x)
+car["year"] = 2020
+print(x)
+
+# 判断一个 key 是否存在
+if "model" in thisdict:
+  print("Yes, 'model' is one of the keys in the thisdict dictionary")
+```
+
+### 改变字典里面的内容
+```python
+thisdict = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964
+}
+thisdict["year"] = 2018
+```
+
+### 给字典添加元素
+```python
+thisdict = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964
+}
+
+thisdict["color"] = "red"
+print(thisdict)
+```
+
+### 给字典移除元素
+```
+thisdict = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964
+}
+
+# 通过 pop
+thisdict.pop("model")
+print(thisdict)
+
+# 通过 del
+del thisdict["year"]
+print(thisdict)
+```
+
+### 遍历一个字典
+```python
+thisdict = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964
+}
+
+# 遍历所有的 key
+for x in thisdict:
+  print(x)
+
+# 遍历所有的 value
+for x in thisdict.values():
+  print(x)
+
+# 遍历所有的 item
+for x, y in thisdict.items():
+  print(x, y)
+```
+
+### 字典的其他操作
+![image](https://user-images.githubusercontent.com/70382342/213336048-32d07a64-92df-49fe-9c2a-ab2332d28939.png)
