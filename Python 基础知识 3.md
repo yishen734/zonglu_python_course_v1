@@ -143,7 +143,7 @@ print(newlist)
 
 
 ## Tuple (元组)
-元组里面的元素是 ```有序的```， ```可不以改变的```，但```允许重复的```
+元组里面的元素是 ```有序的```， ```可以改变的```，但```允许重复的```
 与此同时，元组元素是索引的，第一个元素的索引为 0，第二个为 1，以此类推
 
 </br>
@@ -206,7 +206,7 @@ print(yellow)
 print(red)
 ```
 
-### 循环一个列表
+### 循环一个元组
 ```python
 # 直接遍历，不通过索引
 thistuple = ("apple", "banana", "cherry")
@@ -219,5 +219,84 @@ for i in range(len(thistuple)):
   print(thistuple[i])
 ```
 
-### 列表的其他操作
+### 元组的其他操作
 ![image](https://user-images.githubusercontent.com/70382342/213334232-c9351a25-7360-413d-b754-7c403fc7666b.png)
+
+
+
+
+
+
+## Set (集合)
+集合里面的元素是 ```无序的```， ```不可以改变的```，且```不可以重复的```
+由于集合是无序的，里面的元素没有索引
+
+</br>
+### 创建集合
+```python
+thisset = {"apple", "banana", "cherry"}
+print(thisset)
+```
+
+### 访问集合中的值
+```
+# 每一次的结果都可能不同
+thisset = {"apple", "banana", "cherry"}
+for x in thisset:
+  print(x)
+  
+# 由于集合无序，所以其元素没有索引，我们不可以通过索引对元素进行访问
+
+# 判断一个元素是否存在
+thisset = {"apple", "banana", "cherry"}
+print("banana" in thisset)
+```
+
+### 给集合添加元素
+```
+# 添加一个元素
+thisset = {"apple", "banana", "cherry"}
+thisset.add("orange")
+print(thisset)
+
+# 把集合 B 的元素都添加给集合 A
+thisset = {"apple", "banana", "cherry"}
+tropical = {"pineapple", "mango", "papaya"}
+thisset.update(tropical)
+print(thisset)
+```
+
+### 给集合移除元素
+```
+# 通过 remove 移除，如果不存在会报错
+thisset = {"apple", "banana", "cherry"}
+thisset.remove("banana")
+print(thisset)
+
+# 通过 remove 移除，如果不存在不会报错
+thisset = {"apple", "banana", "cherry"}
+thisset.discard("banana")
+print(thisset)
+
+# 通过 clear() 清空所有元素 
+thisset = {"apple", "banana", "cherry"}
+thisset.clear()
+print(thisset)
+
+# 删除整个集合
+thisset = {"apple", "banana", "cherry"}
+del thisset
+print(thisset)
+```
+
+### 循环一个集合
+```python
+# 每一次的结果都可能不同
+thisset = {"apple", "banana", "cherry"}
+for x in thisset:
+  print(x)
+```
+
+### 集合的其他操作
+![image](https://user-images.githubusercontent.com/70382342/213335038-57858b7b-1500-430f-aa42-e8fa1d90edf9.png)
+
