@@ -22,7 +22,7 @@ Python 中主要有 8 种数据类型：
 |  Tuple         |  ```举例: ("apple", "banana", "cherry") ```    |
 |  Dict          |  ```举例: {"name" : "John", "age" : 36} ```    |
 
-### List (列表)
+## List (列表)
 列表是最常用的 ```Python``` 数据类型，它可以作为一个方括号内的逗号分隔值出现。
 列表里面的元素是 ```有序的```， ```可以改变的```，并且```允许重复的```
 与此同时，列表元素是索引的，第一个元素的索引为 0，第二个为 1，以此类推
@@ -35,7 +35,7 @@ list2 = [1, 2, 3, 4, 5, 6]
 list3 = ["a", "b", "c", "d"]
 ```
 
-访问列表中的值
+### 访问列表中的值
 ```
 # 正向索引
 thislist = ["apple", "banana", "cherry"]
@@ -62,13 +62,13 @@ if "apple" in thislist:
   print("Yes, 'apple' is in the fruits list")
 ```python
 
-获得列表的长度
+### 获得列表的长度
 ```python
 list1 = ["apple", "banana", "cherry"]
 print(len(list1))
 ```
 
-更新列表
+### 更新列表
 ```python
 thislist = ["apple", "banana", "cherry", "orange", "kiwi", "mango"]
 thislist[1:3] = ["blackcurrant", "watermelon"]
@@ -79,7 +79,7 @@ thislist.insert(2, "watermelon")
 print(thislist)
 ```
 
-插入列表元素
+### 插入列表元素
 ```python
 thislist = ["apple", "banana", "cherry"]
 thislist.append("orange")
@@ -90,7 +90,7 @@ thislist.insert(2, "watermelon")
 print(thislist)
 ```
 
-移除列表元素
+### 移除列表元素
 ```python
 thislist = ["apple", "banana", "cherry"]
 thislist.remove("banana")
@@ -113,7 +113,7 @@ thislist.clear()
 print(thislist)
 ```
 
-循环一个列表
+### 循环一个列表
 ```python
 thislist = ["apple", "banana", "cherry"]
 for x in thislist:
@@ -123,3 +123,21 @@ thislist = ["apple", "banana", "cherry"]
 for i in range(len(thislist)):
   print(thislist[i])
 ```
+
+### List Comprehension
+```python
+# newlist = [expression for item in iterable if condition == True]
+fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
+newlist = [x for x in fruits if "a" in x]
+print(newlist)
+
+newlist = [x for x in range(10)]
+print(newlist)
+
+newlist = [x for x in range(10) if x < 5]
+print(newlist)
+```
+
+### 列表的其他操作
+![image](https://user-images.githubusercontent.com/70382342/213333538-5b81f54d-34c2-4b68-b2c0-13b0db46729b.png)
+
