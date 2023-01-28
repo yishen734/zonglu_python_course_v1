@@ -5,6 +5,7 @@ A function is a block of code which only runs when it is called.
 You can pass data, known as parameters, into a function.
 A function can return data as a result.
 
+
 ## 方程的定义和调用
 ```python3
 def my_function():
@@ -12,6 +13,7 @@ def my_function():
   
  my_function()
 ```
+
 
 ## 方程的 Argument
 Information can be passed into functions as arguments.
@@ -25,6 +27,7 @@ my_function("Jack")
 my_function("Tom")
 my_function("Lily")
 ```
+
 
 ## Argument VS Paramters
 From a function's perspective:
@@ -56,6 +59,11 @@ my_function()
 ```
 
 
+## 习题 1
+设计一个方程 get_max() 可以计算三个数值的最大值并且将其返回
+
+
+
 ## 把不同的结构体传给方程
 You can send any data types of argument to a function (string, number, list, dictionary etc.), and it will be treated as the same data type inside the function.
 
@@ -67,4 +75,16 @@ def my_function(food):
 fruits = ["apple", "banana", "cherry"]
 
 my_function(fruits)
+```
+
+
+## 方程的返回值
+方程不仅仅可以接受值，同时也可以返回值
+```python3
+def my_function(x):
+  return 5 * x
+
+print(my_function(3))
+print(my_function(5))
+print(my_function(9))
 ```
