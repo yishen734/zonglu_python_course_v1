@@ -34,7 +34,7 @@ my_function("Lily")
 ```
 
 
-## Argument VS Paramters
+## Argument 和 Paramters 的区别是什么
 从方程的角度来看：
 
 Paramter 是方程定义的时候括号内列出的变量。
@@ -95,20 +95,36 @@ print(my_function(9))
 ```
 
 ### 习题 1
-设计一个方程 get_max() 可以计算三个数值的最大值并且将其返回
+设计一个方程，参数是一个数字 num。如果 num 是奇数，则打印 “这是个奇数”，否则则打印 “这是个偶数” 
 
 ### 习题 2
 设计一个方程 get_max() 可以计算三个数值的最大值并且将其返回
+```
+例子：list = [1, 2, 3], ans = 3
+```
 
 ### 习题 3
-设计一个方程 get_max() 可以计算三个数值的最大值并且将其返回
+设计一个方程 multiply()，其接受一个 list 作为参数，然后返回 list 中所有数的乘积
+```
+例子：list = [1, 2, 3, 4, 5], ans = 120
+```
 
 ### 习题 4
-设计一个方程 get_max() 可以计算三个数值的最大值并且将其返回
+设计一个方程 string_reverse(), 其接受一个 string 作为参数，然后把其反转过后的 string 返回
+```
+例子：orginal_str = '1234abcd', reversed_str = 'dcba4321'
+```
 
 ### 习题 5
-设计一个方程 get_max() 可以计算三个数值的最大值并且将其返回
+算法经典入门题：两数之和
 
+给定一个整数数组和一个目标值，找出数组中和为目标值的两个数。
+我们可以假设每个输入只对应一种答案，且同样的元素不能被重复利用。
+```
+例子:
+给定 nums = [2, 7, 11, 15], target = 9
+由于 nums[0] + nums[1] = 2 + 7 = 9, 所以返回 [0, 1]
+```
 
 
 
@@ -137,11 +153,14 @@ print(my_function(9))
 比如动物就包含大小（size）和体重（weight）这两个属性
 ```python3
 class animal:
+    # 这是类的构造器
     def __init__(self, size, weight):
         self.size = size
         self.weight = weight
         
-
+cat = animal(1, 2)
+print(cat.size)
+print(cat.weight)
 ```
 
 
@@ -149,11 +168,13 @@ class animal:
 而我们则用之前学习到的方程（在 class 中也叫做 method）来描述一个对象的行为
 ```python3
 class animal:
-    # 这是类的构造器
     def __init__(self, size, weight):
         self.size = size
         self.weight = weight
     
     def display_info(self):
         print("My size is {}, and weight is ".format(self.size, self.weight))
+        
+cat = animal(1, 2)
+cat.display_info()
 ```
