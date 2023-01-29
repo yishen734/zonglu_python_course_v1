@@ -174,7 +174,7 @@ class animal:
         self.weight = weight
     
     def display_info(self):
-        print("My size is {}, and weight is ".format(self.size, self.weight))
+        print("My size is {}, and weight is {}".format(self.size, self.weight))
         
 cat = animal(1, 2)
 cat.display_info()
