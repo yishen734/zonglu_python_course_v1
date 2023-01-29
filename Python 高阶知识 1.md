@@ -82,9 +82,39 @@ my_function(fruits)
 方程不仅仅可以接受值，同时也可以返回值
 ```python3
 def my_function(x):
-  return 5 * x
+    return 5 * x
 
 print(my_function(3))
 print(my_function(5))
 print(my_function(9))
+```
+
+## 面对对象编程
+一个对象有两个特点：
+（1）属性（attributes）
+（2）行为（behavior）
+一讲到面向对象编程，那么就要知道什么是类(class)，什么是什么是方法（Method），什么是对象（obejct）？
+
+## 类 （class）
+类就是对一类有共同属性和行为的对象的总称。
+比如：小轿车，面包车，客运汽车，货车，等等这一些我们可以定义一个共同的类来描述它们，Class automobile；在这个类里面我们可以定义一些描述这个车的属性和行为。
+
+### 属性（attributes）
+比如车就包含大小（size）和速度（speed）这两个属性
+```python3
+class automobile:
+    def __init__(self, size, speed):
+        self.size = size
+        self.speed = speed
+```
+
+而我们则用之前学习到的方程（在 class 中也叫做 method）来描述一个对象的行为
+```python3
+class automobile:
+    def __init__(self, size, speed):
+        self.size = size
+        self.speed = speed
+    
+    def display_info(self):
+        print("My size is {}, and speed is ".format(self.size, self.speed))
 ```
