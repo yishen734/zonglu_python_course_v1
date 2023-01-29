@@ -69,16 +69,16 @@ my_function()
 ```
 
 
-## 把不同的结构体传给方程
-You can send any data types of argument to a function (string, number, list, dictionary etc.), and it will be treated as the same data type inside the function.
+## 方程可以接受任何类型参数
+我们可以把任意类型的 argument 传递给方程 (string, number, list, dictionary etc.)
 
-E.g. if you send a List as an argument, it will still be a List when it reaches the function:
+下面的例子中我们将一个 list 作为 argument 进行了传递，在 function 的 paramter ```food``` 接受了这个 argument 之后，自己也随之被转化成为了 list
 ```python
 def my_function(food):
     for x in food:
         print(x)
+        
 fruits = ["apple", "banana", "cherry"]
-
 my_function(fruits)
 ```
 
@@ -96,6 +96,7 @@ print(my_function(9))
 
 ### 习题 1
 设计一个方程，参数是一个数字 num。如果 num 是奇数，则打印 “这是个奇数”，否则则打印 “这是个偶数” 
+
 
 ### 习题 2
 设计一个方程 get_max() 可以计算三个数值的最大值并且将其返回
@@ -178,3 +179,12 @@ class animal:
 cat = animal(1, 2)
 cat.display_info()
 ```
+
+
+### 习题 6
+定义一个类叫做 car, 其拥有 ```size```，```color```，```brand```，```price```，```current_direction``` 五个属性，```current_direction``` 的默认值为 ```none```
+与此同时，定于以下 methods:
+1. ```launch()``` -> 调用的时候会打印 ```汽车已经启动```, 并且把 ```current_direction``` 设置为 ```forward```
+2. ```turn_around()``` -> 调用后会把 ```current_direction``` 进行反转，i.e. 如果之前是 ```forward```，则变成 ```backward```，之前是 ```backward```，那么现在就变为 ```forward```
+3. ```stop()``` -> 调用后会打印 ```汽车已经停止```，并且把 ```current_direction``` 设置为 ```backward```
+4. ```sell()``` -> 接受一个 number 作为参数，如果其值大于汽车的 ```price```，打印 ```汽车成功出售```，否则打印 ```金钱不足, 出售失败```
