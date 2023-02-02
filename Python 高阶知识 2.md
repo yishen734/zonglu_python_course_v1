@@ -66,13 +66,13 @@ class Person:
   def run(self):
     print("Person: I am running")
     
-class Employer(Person):
+class Manager(Person):
   def __init__(self, firstname, lastname, year):
     super().__init__(firstname, lastname)
-    self.graduationyear = year
+    self.year = year
 
   def run(self):
-    print("Employer: I am running")
+    print("Manager: I am running")
     
 class Employee(Person):
   def __init__(self, firstname, lastname, age):
@@ -83,11 +83,11 @@ class Employee(Person):
     print("Employee: I am running")
      
 person = Person("John", "Doe")
-student = Employer("Jack", "Li", 30)
-teacher = Employee("Jason", "Mooney", 25)
+manager = Manager("Jack", "Li", 30)
+employee = Employee("Jason", "Mooney", 25)
 person.run()
-student.run()
-teacher.run()
+manager.run()
+employee.run()
 ```
 
 ### 习题 1
@@ -95,8 +95,8 @@ teacher.run()
 1. ```构造器 __init__``` - 接受三个参数，```size```，```color```, ```name``` 并将其赋值给自身的 ```attributes```
 2. ```eat()``` - 打印 ```"Animal is eating"```
 
-设计一个子类叫做 ```Dog```, 继承 Animation, 并且重载 ```Eat()``` - 打印 ```"Dog is eating"```，并且拥有以下新 ```attributes```
-1. ```height``` 并且重载父类 ```__init__``` 接受一个新的参数 ```Height```
+设计一个子类叫做 ```Dog```, 继承 Animation, 并且重载 ```eat()``` - 打印 ```"Dog is eating"```，并且拥有以下新 ```attributes```
+1. ```height``` 并且重载父类 ```__init__``` 接受一个新的参数 ```height```
 
 和以下新方程
 1. ```bark()``` - 打印 ```"{name} is barking"```
