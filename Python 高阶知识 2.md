@@ -32,7 +32,7 @@ class Person:
     self.firstname = firstname
     self.lastname = lastname
     
-  def run():
+  def run(self):
     print("Person: I am running")
 
 person = Person("John", "Doe")
@@ -63,7 +63,7 @@ class Person:
     self.firstname = firstname
     self.lastname = lastname
 
-  def run():
+  def run(self):
     print("Person: I am running")
     
 class Employer(Person):
@@ -71,7 +71,7 @@ class Employer(Person):
     super().__init__(firstname, lastname)
     self.graduationyear = year
 
-  def run():
+  def run(self):
     print("Employer: I am running")
     
 class Employee(Person):
@@ -79,7 +79,7 @@ class Employee(Person):
     super().__init__(firstname, lastname)
     self.age = age
 
-  def run():
+  def run(self):
     print("Employee: I am running")
      
 person = Person("John", "Doe")
@@ -89,3 +89,23 @@ person.run()
 student.run()
 teacher.run()
 ```
+
+### 习题 1
+设计一个基类叫做 ```Animal```, 拥有以下 methods
+1. ```构造器 __init__``` - 接受三个参数，```size```，```color```, ```name``` 并将其赋值给自身的 ```attributes```
+2. ```Eat()``` - 打印 ```"Animal is eating"```
+
+设计一个子类叫做 Dog, 继承 Animation, 并且重载 ```Eat()``` - 打印 ```"Dog is eating"```，并且拥有以下新 ```attributes```
+1. ```height``` 并且重载父类 ```__init__``` 接受一个新的参数 ```Height```
+
+和以下新方程
+1. ```Bark()``` - 打印 ```"{name} is barking"```
+
+设计另外一个子类叫做 Cat, 继承 Animation, 并且重载 ```Eat()``` - 打印 ```"Cat is eating"```，并且拥有以下新 ```attributes```
+1. ```age``` 并且重载父类 ```__init__``` 接受一个新的参数 ```age```
+
+并且拥有一个新方程
+1. ```Sleep()``` - 打印 ```"{name} is sleeping"```
+
+
+
