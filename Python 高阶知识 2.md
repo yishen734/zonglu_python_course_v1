@@ -42,7 +42,7 @@ person.run()
 
 ## 继承 - 创建子类
 ```python
-class Employer(Person):
+class Employee(Person):
   # __init__ 是 python 的构造器，如果我们在子类里面将其省略，那么父类的构造器会被自动调用。如果我们没有省略，那么新加的构造器会将父类的构造器进行重载
   def __init__(self, firstname, lastname, age):
     # 我们也可以通过 super 来显性的调用父类的构造器
@@ -66,28 +66,28 @@ class Person:
   def run(self):
     print("Person: I am running")
     
-class Manager(Person):
+class Employee(Person):
   def __init__(self, firstname, lastname, year):
     super().__init__(firstname, lastname)
     self.year = year
 
   def run(self):
-    print("Manager: I am running")
+    print("Employee: I am running")
     
-class Employee(Person):
+class Customer(Person):
   def __init__(self, firstname, lastname, age):
     super().__init__(firstname, lastname)
     self.age = age
 
   def run(self):
-    print("Employee: I am running")
+    print("Customer: I am running")
      
 person = Person("John", "Doe")
-manager = Manager("Jack", "Li", 30)
-employee = Employee("Jason", "Mooney", 25)
+employee = Employee("Jack", "Li", 30)
+customer = Customer("Jason", "Mooney", 25)
 person.run()
-manager.run()
 employee.run()
+customer.run()
 ```
 
 ### 习题 1
