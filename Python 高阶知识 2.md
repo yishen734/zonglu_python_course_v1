@@ -5,7 +5,7 @@
 
 ![image](https://user-images.githubusercontent.com/70382342/216195958-1227ae1e-9d77-493b-b033-cfdab815c728.png)
 
-对于 ```Employee``` 来说，```Person``` 就是它的父类，对于 ```Person``` 来说，```Employee``` 就是它的父类。然后对于 ```Developer``` 来说，```Employee``` 就是它的子类，而对于 ```Employee``` 来说， ```developer``` 就是它的子类。
+对于 ```Employee``` 来说，```Person``` 就是它的父类，对于 ```Person``` 来说，```Employee``` 就是它的自类。然后对于 ```Developer``` 来说，```Employee``` 就是它的父类，而对于 ```Employee``` 来说， ```developer``` 就是它的子类。
 
 继承最大的好处是子类获得了父类的全部功能。比如说 ```Person``` 有 ```run()``` 这个方法，那么，```Employee```, ```Customer``` 作为它的子类，什么额外的事情也不需要做，就自动拥有了 ```run()``` 方法，这帮助我们大量减少了代码重复的问题。
 
