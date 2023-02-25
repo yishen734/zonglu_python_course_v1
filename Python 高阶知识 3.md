@@ -15,7 +15,7 @@
 
 类的 ```protected``` 成员除了可以在类内访问和调用，还可以在子类中进行操作。这些保证了父类的一些资源可以被继承到子类。
 
-那么 ```python```中有类似的关键字来控制类内资源的访问权限吗？答案是没有。```python``` 并没有提供类似的机制。一般我们采用在实例变量名和方法名前面加下滑线的方式来模仿 ```private``` 的机制
+那么 ```python``` 中有类似的关键字来控制类内资源的访问权限吗？答案是没有。```python``` 并没有提供类似的机制。一般我们采用在实例变量名和方法名前面加下滑线的方式来模仿 ```private``` 的机制
 
 ```python3
 class Person:
@@ -39,6 +39,6 @@ print(bob.lastname)
 
 # 创建 Employee 实例
 jason = Employee("jason", Male, 100000)
-print(jason.__salary)
+# print(jason.__salary)
 print(jason.gey_salary())
 ```
