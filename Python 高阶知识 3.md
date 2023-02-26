@@ -42,3 +42,41 @@ jason = Employee("jason", Male, 100000)
 # print(jason.__salary)
 print(jason.gey_salary())
 ```
+
+## Python 里面的模块概念
+Python 模块是包含 Python 定义和语句的文件。一个模块可以定义函数、类和变量，也可以包括可执行的代码。将相关的代码分组到一个模块中，使得代码更容易理解和使用，同时也使得代码更具有逻辑性。
+
+```python3
+# 一个简单的 module: calc.py
+def add(x, y):
+    return x + y
+ 
+def subtract(x, y):
+    return x - y
+```
+
+## 模块的导入
+### module 的整个导入
+```python3
+# 导入 module math.py
+import math
+ 
+print(math.sqrt(16))
+```
+
+```python3
+from math import *
+ 
+print(sqrt(16))
+print(factorial(6))
+```
+
+### module 的部分导入
+```python3
+# 从 math module 里面只导入 sqrt() 和 factorial 方程
+from math import sqrt, factorial
+
+# 如果我们写的是 “import math”，那么我们在调用方程的时候就需要写 math.sqrt(16) 和 math.factorial()
+print(sqrt(16))
+print(factorial(6))
+```
