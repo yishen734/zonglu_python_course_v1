@@ -6,7 +6,11 @@
 
 - ```Private```: 只能从类的内部访问，不允许外部访问。
 
-访问限制符主要是为了实现数据的封装，让数据可以更安全的被访问和使用
+访问限制符主要是为了实现数据的封装，让数据可以更安全的被访问和使用。如果没有访问限制符 (即所有的成员变量和方法都是公开的)，这意味着我们可以随意篡改类里面的一些核心数值，这是一种很危险的行为。这就引入了 ```getter``` 和 ```setter``` 的概念。
+
+## Getter 和 Setter
+想要获得私有变量的值，必须通过 ```getter``` 来获得。同理，想要修改私有变量的值，需要通过 ```setter``` 来修改。```setter``` 在大多数情况下充当着一个 ```数据合法验证``` 的作用，保证用户传入的数值是合法的。
+
 
 ## Python 的访问限制符
 很多面向对象的语言都提供了 ```public```，```private``` 和 ```protected``` 等关键字来限定类方法和属性的访问方式。
@@ -21,64 +25,78 @@
 
 ```python3
 class Person:
-  def __init__(self, firstname, lastname):
+  def __init__(self, firstname, lastname, age):
     self.firstname = firstname
     self.lastname = lastname
+    self._age = age
     
 class Employee(Person):
-  def __init__(self, firstname, lastname, salary):
-    super().__init__(firstname, lastname)
+  def __init__(self, firstname, lastname, age, salary):
+    super().__init__(firstname, lastname, age)
     self.__salary = salary
 
-  # 借助 public 方程去访问私有变量
+  # getter: 借助 public 方程去访问私有变量
   def get_salary(self):
       return self.__salary
+  
+  def set_salary(self, new_salary):
+    if (new_salary >= 0):
+      self.__salary = new_salary
       
 # 创建 Person 实例
-bob = Person("Bob", "Male")
+bob = Person("Bob", "Male", 22)
 print(bob.firstname)
 print(bob.lastname)
 
 # 创建 Employee 实例
-jason = Employee("jason", Male, 100000)
-# print(jason.__salary)
-print(jason.gey_salary())
+jason = Employee("jason", "Male", 24, 100000)
+# print(jason.__salary)  # 直接访问私有变量会报错
+print(jason._age)
+print(jason.get_salary())
+jason.set_salary(150000)
+print(jason.get_salary())
 ```
 
 ## Python 里面的模块概念
 Python 模块是包含 Python 定义和语句的文件。一个模块可以定义函数、类和变量，也可以包括可执行的代码。将相关的代码分组到一个模块中，使得代码更容易理解和使用，同时也使得代码更具有逻辑性。
 
 ```python3
-# 一个简单的 module: calc.py
+# 一个简单的 module: calculation.py
 def add(x, y):
     return x + y
  
 def subtract(x, y):
     return x - y
+    
+def multiple(x, y):
+    return x * y
+
+def square(x):
+    return x * x
 ```
 
 ## 模块的导入
 ### 模块的整个导入
 ```python3
-# 导入 module math.py
-import math
+# 导入 module calculation.py
+import calculation
  
-print(math.sqrt(16))
+print(calculation.add(1, 2))
 ```
 
 ```python3
-from math import *
+from calculation import *
  
-print(sqrt(16))
-print(factorial(6))
+print(add(1, 2))
+print(square(4))
 ```
 
 ### 模块的部分导入
 ```python3
-# 从 math module 里面只导入 sqrt() 和 factorial 方程
-from math import sqrt, factorial
+# 从 calculation module 里面只导入 add() 和 square() 方程
+from calculation import add, square
 
-# 如果我们写的是 “import math”，那么我们在调用方程的时候就需要写 math.sqrt(16) 和 math.factorial()
-print(sqrt(16))
-print(factorial(6))
+# 如果我们写的是 “import calculation”，那么我们在调用方程的时候就需要写 calculation.add(1, 2) 和 calculation.square(4)
+print(add(1, 2))
+print(square(4))
 ```
