@@ -25,23 +25,23 @@
 
 ```python3
 class Person:
-  def __init__(self, firstname, lastname, age):
-    self.firstname = firstname
-    self.lastname = lastname
-    self._age = age
+    def __init__(self, firstname, lastname, age):
+        self.firstname = firstname
+        self.lastname = lastname
+        self._age = age
     
 class Employee(Person):
-  def __init__(self, firstname, lastname, age, salary):
-    super().__init__(firstname, lastname, age)
-    self.__salary = salary
+    def __init__(self, firstname, lastname, age, salary):
+        super().__init__(firstname, lastname, age)
+        self.__salary = salary
 
   # getter: 借助 public 方程去访问私有变量
   def get_salary(self):
       return self.__salary
   
   def set_salary(self, new_salary):
-    if (new_salary >= 0):
-      self.__salary = new_salary
+      if (new_salary >= 0):
+          self.__salary = new_salary
       
 # 创建 Person 实例
 bob = Person("Bob", "Male", 22)
