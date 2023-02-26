@@ -39,6 +39,7 @@ class Employee(Person):
   def get_salary(self):
       return self.__salary
   
+  # setter: 借助 public 方程去改变私有变量
   def set_salary(self, new_salary):
       if (new_salary >= 0):
           self.__salary = new_salary
