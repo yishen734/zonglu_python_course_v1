@@ -6,6 +6,8 @@
 
 - ```Private```: 只能从类的内部访问，不允许外部访问。
 
+访问限制符主要是为了实现数据的封装，让数据可以更安全的被访问和使用
+
 ## Python 的访问限制符
 很多面向对象的语言都提供了 ```public```，```private``` 和 ```protected``` 等关键字来限定类方法和属性的访问方式。
 
@@ -56,7 +58,7 @@ def subtract(x, y):
 ```
 
 ## 模块的导入
-### module 的整个导入
+### 模块的整个导入
 ```python3
 # 导入 module math.py
 import math
@@ -71,7 +73,7 @@ print(sqrt(16))
 print(factorial(6))
 ```
 
-### module 的部分导入
+### 模块的部分导入
 ```python3
 # 从 math module 里面只导入 sqrt() 和 factorial 方程
 from math import sqrt, factorial
