@@ -30,7 +30,6 @@ if __name__ == "__main__":
 
     # 关卡信息
     frame = 0.05
-    level = 1
 
     # 蛇
     SNAKE_WIDTH, SNAKE_HEIGHT = 12, 12
@@ -76,7 +75,7 @@ if __name__ == "__main__":
 
         # 更新数据 - 让蛇移动起来
         if not pause:
-            count_time += frame * level
+            count_time += frame
             first = snake_list[0]
             snake_list[1:] = snake_list[:-1]
             if direction == 'up':
@@ -94,6 +93,6 @@ if __name__ == "__main__":
         # 画蛇
         draw_snake()
         pygame.display.flip()
-        pygame.time.delay(int(frame / level * 1000))
+        pygame.time.delay(int(frame * 1000))
     pygame.quit()
 ```
