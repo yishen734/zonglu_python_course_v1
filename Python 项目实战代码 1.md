@@ -76,16 +76,16 @@ if __name__ == "__main__":
         # 更新数据 - 让蛇移动起来
         if not pause:
             count_time += frame
-            first = snake_list[0]
+            head = snake_list[0]
             snake_list[1:] = snake_list[:-1]
             if direction == 'up':
-                snake_list[0] = [first[0], first[1] - SNAKE_WIDTH]
+                snake_list[0] = [head[0], head[1] - SNAKE_WIDTH]
             elif direction == 'down':
-                snake_list[0] = [first[0], first[1] + SNAKE_WIDTH]
+                snake_list[0] = [head[0], head[1] + SNAKE_WIDTH]
             elif direction == 'left':
-                snake_list[0] = [first[0] - SNAKE_WIDTH, first[1]]
+                snake_list[0] = [head[0] - SNAKE_WIDTH, head[1]]
             elif direction == 'right':
-                snake_list[0] = [first[0] + SNAKE_WIDTH, first[1]]
+                snake_list[0] = [head[0] + SNAKE_WIDTH, head[1]]
 
         # 画背景
         draw_background()
