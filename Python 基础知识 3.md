@@ -2,7 +2,7 @@
 
 ## 0. 上一节课知识回顾和答疑
 
-## 1. Python 的高级数据类型 (List, Tuple, Sets and Dictionary)
+## 1. Python 的高级数据类型 (List, Tuple, Set and Dictionary)
 Python 中主要有 8 种数据类型：
 - 简单数据类型: ```Number (数字, 其中又包括 int, float, complex), Boolean(布尔值), String (字符串), None（空值)```
 - 复杂数据类型: ```List (列表), Set(集合), Tuple (元组), Dict (字典)```
