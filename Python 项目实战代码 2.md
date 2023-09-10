@@ -10,226 +10,294 @@ from pygame.color import THECOLORS as COLORS
 from pygame.locals import *
 
 
+"""
+和画相关的方程
+"""
 def draw_background():
     # 游戏的背景色
     screen.fill(COLORS['white'])
+    
     # 计分板
-    pygame.draw.rect(screen, COLORS['black'], (-100, GAME_SIZE[1], 3000, 200), 0)
+    pygame.draw.rect(
+        screen, 
+        COLORS['black'], 
+        (-100, GAME_SIZE[1], 2000, 200), 
+        0
+    )
 
 def draw_wall():
-    for xy in wall_list:
-        pygame.draw.rect(screen, COLORS['black'], (xy[0] - WALL_WIDTH / 2, xy[1] - WALL_WIDTH / 2, WALL_WIDTH, WALL_HEIGHT), 0)
-
-def draw_snake():
-    head = snake_list[0]
-    pygame.draw.circle(screen,COLORS['darkred'],(head[0],head[1]),int(SNAKE_WIDTH/2),0)
-    for xy in snake_list[1:]:
-        pygame.draw.rect(screen,COLORS['darkred'],(xy[0]-SNAKE_WIDTH/2,xy[1]-SNAKE_WIDTH/2,SNAKE_WIDTH,SNAKE_HEIGHT),2)
-
-def draw_food():
-    for xyz in food_list:
+    for x, y in wall_list:
         pygame.draw.rect(
             screen,
-            FOOD_COLORS[xyz[2] - 1],
-            (xyz[0] - FOOD_WIDTH / 2, xyz[1] - FOOD_WIDTH / 2, FOOD_WIDTH, FOOD_HEIGHT),
+            COLORS['black'],
+            (x - WALL_WIDTH / 2, y - WALL_HEIGHT / 2, WALL_WIDTH, WALL_HEIGHT),
+            WALL_WIDTH
+        )
+
+def draw_food():
+    for x, y, color_index in food_list:
+        pygame.draw.rect(
+            screen,
+            FOOD_COLORS[color_index],
+            (x - FOOD_WIDTH / 2, y - FOOD_HEIGHT / 2, FOOD_WIDTH, FOOD_HEIGHT),
             0
+        )
+        
+def draw_snake():
+    # 画蛇的头部 （圆形）
+    head_x, head_y = snake_list[0]
+    pygame.draw.circle(
+        screen,
+        COLORS['red'],
+        (head_x, head_y),
+        int(SNAKE_WIDTH / 2),
+        0
+    )
+    
+    # 画蛇的身体 (矩形)
+    for x, y in snake_list[1:]:
+        pygame.draw.rect(
+            screen,
+            COLORS['darkblue'],
+            (x - SNAKE_WIDTH / 2, y - SNAKE_HEIGHT / 2, SNAKE_WIDTH, SNAKE_HEIGHT),
+            2
         )
 
 def draw_context():
-    txt = FONT_M.render('Snake length: ' + str(len(snake_list) - 1), True, COLORS['lightblue'])
-    x,y = 10, GAME_SIZE[1] + (int((SIZE[1]-GAME_SIZE[1]) / 2))
-    y = int(y - FONT_M.size('Count')[1] / 2)
-    screen.blit(txt, (x, y))
+    text_string = "Snake Length: " + str(len(snake_list))
+    text = FONT_M.render(text_string, True, COLORS['lightblue'])
+    x, y = 10, GAME_SIZE[1] + int(CONTEXT_AREA_HEIGHT / 2)
+    y = int(y - FONT_M.size(text_string)[1] / 2)
+    screen.blit(text, (x, y))
 
 def draw_pause():
-    s = pygame.Surface(SIZE, pygame.SRCALPHA)
-    s.fill((255, 255, 255, 220))
-    screen.blit(s, (0,0))
-    txt = FONT_M.render('PAUSE', True, COLORS['darkgray'])
+    surface = pygame.Surface(SIZE, pygame.SRCALPHA)
+    surface.fill((255, 255, 255, 220))
+    screen.blit(surface, (0, 0))    
+    text_string = "PAUSE"
+    text = FONT_M.render(text_string, True, COLORS['darkgray'])
     x, y = SIZE[0] / 2, SIZE[1] / 2
-    x, y = int(x - FONT_M.size('PAUSE')[0] / 2), int(y - FONT_M.size('PAUSE')[1] / 2)
-    screen.blit(txt,(x,y))
+    x = int(x - FONT_M.size(text_string)[0] / 2)
+    y = int(y - FONT_M.size(text_string)[1] / 2)
+    screen.blit(text, (x, y))
 
 def draw_dead():
-    s = pygame.Surface(SIZE, pygame.SRCALPHA)
-    s.fill((255,255,255,240))
-    screen.blit(s, (0,0))
-    txt = FONT_M.render('YOU DEAD',True,COLORS['black'])
-    x,y = SIZE[0]/2,SIZE[1]/2
-    x,y = int(x-FONT_M.size('YOU DEAD')[0]/2),int(y-FONT_M.size('YOU DEAD')[1]/2)
-    screen.blit(txt,(x,y))
+    surface = pygame.Surface(SIZE, pygame.SRCALPHA)
+    surface.fill((255, 255, 255, 240))
+    screen.blit(surface, (0, 0))    
+    text_string = "YOU DEAD"
+    text = FONT_M.render(text_string, True, COLORS['black'])
+    x, y = SIZE[0] / 2, SIZE[1] / 2
+    x = int(x - FONT_M.size(text_string)[0] / 2)
+    y = int(y - FONT_M.size(text_string)[1] / 2)
+    screen.blit(text, (x, y))
 
-def rect_cover(rect1, rect2):
-    left1 = int(rect1[0])
-    right1 = int(rect1[0]+rect1[2])
-    up1 = int(rect1[1])
-    down1 = int(rect1[1]+rect1[3])
-    
-    left2 = int(rect2[0])
-    right2 = int(rect2[0]+rect2[2])
-    up2 = int(rect2[1])
-    down2 = int(rect2[1]+rect2[3])
 
-    if not (right2<=left1 or left2>=right1 or down2<=up1 or up2>=down1):
-        return True
-    return False
-
-def add_food():
-    while(True):
-        xyz = [random.choice(X_LIST), random.choice(Y_LIST), random.choice([1,2,3,4])]
-        if xyz not in wall_list:
-            food_list.append(xyz)
-            break
-
-def add_body(length=1):
-    for c in range(length):
-        # 尾巴加一节
-        last2, last1 = snake_list[-2], snake_list[-1]
-        if last2[0] == last1[0]: # 竖着的两段
-            if last2[1] > last1[1]: # 朝下
-                snake_list.append([last1[0],last1[1]-SNAKE_WIDTH])
-            else:
-                snake_list.append([last1[0],last1[1]+SNAKE_WIDTH])
-        else: # 横着的两段
-            if last2[0] > last1[0]: # 朝右
-                snake_list.append([last1[0]-SNAKE_WIDTH,last1[1]])
-            else:
-                snake_list.append([last1[0]+SNAKE_WIDTH,last1[1]])
-
+"""
+和蛇核心逻辑相关的方程
+"""
 def check_food():
-    # 头与食物
-    first = snake_list[0]
-    snake_head_rect = (first[0]-SNAKE_WIDTH/2,first[1]-SNAKE_WIDTH/2,SNAKE_WIDTH,SNAKE_HEIGHT)
+    snake_head_x, snake_head_y = snake_list[0]
+    snake_head_rect = (snake_head_x - SNAKE_WIDTH / 2, snake_head_y - SNAKE_HEIGHT / 2, SNAKE_WIDTH, SNAKE_HEIGHT)
     for i in range(len(food_list)):
-        xyz = food_list[i]
-        food_rect = (xyz[0]-FOOD_WIDTH/2,xyz[1]-FOOD_WIDTH/2,FOOD_WIDTH,FOOD_HEIGHT)
-        if rect_cover(snake_head_rect,food_rect):
-            add_body(xyz[2])
+        food_x, food_y, _ = food_list[i]
+        food_rect = (food_x - FOOD_WIDTH / 2, food_y - FOOD_HEIGHT / 2, FOOD_WIDTH, FOOD_HEIGHT)
+        if rect_intersect(snake_head_rect, food_rect):
+            add_body()
             del food_list[i]
             return True
     return False
 
-def check_dead():
-    first = snake_list[0]
-    snake_head_rect = (first[0]- SNAKE_WIDTH/2, first[1] - SNAKE_WIDTH/2, SNAKE_WIDTH, SNAKE_HEIGHT)
-    # 头与边缘
-    if first[0] < 0 or first[0] > GAME_SIZE[0] or first[1] < 0 or first[1] > GAME_SIZE[1]:
-        return True
-    # 头与墙壁
-    for xy in wall_list:
-        wall_rect = (xy[0] - WALL_WIDTH/2, xy[1]- WALL_WIDTH / 2, WALL_WIDTH, WALL_HEIGHT)
-        if rect_cover(snake_head_rect,wall_rect):
-            return True
-    # 头与自身
-    for xy in snake_list[1:]:
-        body_rect = (xy[0] - SNAKE_WIDTH / 2,xy[1] - SNAKE_WIDTH / 2, SNAKE_WIDTH, SNAKE_HEIGHT)
-        if rect_cover(snake_head_rect,body_rect):
-            return True
-    return False
+def add_body(length = 1):
+    for _ in range(length):
+        last1, last2 = snake_list[-1], snake_list[-2]
+        last1_x, last1_y = last1
+        last2_x, last2_y = last2
+        # 尾部的方向朝上或者朝下
+        if last1_x == last2_x:
+            # 尾部朝下
+            if last1_y < last2_y:
+                snake_list.append([last1_x, last1_y - SNAKE_HEIGHT])
+            # 尾部朝上
+            else:
+                snake_list.append([last1_x, last1_y + SNAKE_HEIGHT])
+        # 尾部的方向朝左或者朝右 
+        else:       
+            # 尾部朝右
+            if last1_x < last2_x:
+                snake_list.append([last1_x - SNAKE_WIDTH, last1_y])
+            # 尾部朝左
+            else:
+                snake_list.append([last1_x + SNAKE_WIDTH, last1_y])
 
+def add_food():
+    while(True):
+        new_food = [random.choice(X_LIST), random.choice(Y_LIST), random.choice([i for i in range(len(FOOD_COLORS))])]  
+        new_food_xy = [new_food[0], new_food[1]]
+        if new_food_xy not in wall_list:
+            food_list.append(new_food)
+            break
+    
+def check_dead():
+    snake_head_x, snake_head_y = snake_list[0]
+    snake_head_rect = (snake_head_x - SNAKE_WIDTH / 2, snake_head_y - SNAKE_HEIGHT / 2, SNAKE_WIDTH, SNAKE_HEIGHT)
+    
+    # 检查蛇头和边缘有没有碰撞
+    if (snake_head_x < 0 or snake_head_x > GAME_SIZE[0] or snake_head_y < 0 or snake_head_y > GAME_SIZE[1]):
+        return True
+    # 检查蛇头和墙壁有没有碰撞
+    for wall_x, wall_y in wall_list:
+        wall_rect = (wall_x - WALL_WIDTH / 2, wall_y - WALL_HEIGHT / 2, WALL_WIDTH, WALL_HEIGHT)
+        if rect_intersect(snake_head_rect, wall_rect):
+            return True    
+    # 检查蛇头和蛇自己的身体有没有碰撞
+    for snake_body_x, snake_body_y in snake_list[1:]:
+        snake_body_rect = (snake_body_x - SNAKE_WIDTH / 2, snake_body_y - SNAKE_HEIGHT / 2, SNAKE_WIDTH, SNAKE_HEIGHT)
+        if rect_intersect(snake_head_rect, snake_body_rect):
+            return True
+    return False    
+
+ 
+"""
+工具类方程
+"""       
+def rect_intersect(rect1, rect2):
+    x1, y1, w1, h1 = rect1
+    left_x1 = int(x1)
+    right_x1 = int(x1 + w1)
+    up_y1 = int(y1)
+    down_y1 = int(y1 + h1)
+        
+    x2, y2, w2, h2 = rect2
+    left_x2 = int(x2)
+    right_x2 = int(x2 + w2)
+    up_y2 = int(y2)
+    down_y2 = int(y2 + h2)
+    
+    hasNoIntersect = (left_x2 >= right_x1 or right_x2 <= left_x1 or down_y2 <= up_y1 or up_y2 >= down_y1)
+    return not hasNoIntersect
+
+# 程序的入口
 if __name__ == "__main__":
-    # 初始化游戏
+    # 利用 pygame 去对游戏进行一个初始化
     pygame.init()
     
-    # 定义所有的常数变量
+    # 定义所有需要的常量
     GAME_SIZE = [900, 900]
-    SIZE = [GAME_SIZE[0], GAME_SIZE[1] + 100]
-    FONT_S = pygame.font.SysFont('Times', 50)
-    FONT_M = pygame.font.SysFont('Times', 90)
-    DIRECTION = ['up','right','down','left']
     X_LIST = [x for x in range(GAME_SIZE[0])]
     Y_LIST = [y for y in range(GAME_SIZE[1])]
-    FOOD_COLORS = ((46, 139, 87),(199, 21, 133),(25, 25, 112),(255, 215, 0))
-
-    # wall
-    wall_list = [[100,200],[600,500],[350,200],[500,800]]
-    WALL_WIDTH, WALL_HEIGHT = 30,30
-
-    # food
-    food_list = [(150,200,1),(300,500,1),(740,542,1),(300,600,1),(700,600,1)]
-    FOOD_WIDTH, FOOD_HEIGHT = 14, 14
+    CONTEXT_AREA_HEIGHT = 100
+    SIZE = [GAME_SIZE[0], GAME_SIZE[1] + CONTEXT_AREA_HEIGHT]
+    FONT_S = pygame.font.SysFont("Times", 50)
+    FONT_M = pygame.font.SysFont("Times", 90)
+    FOOD_COLORS = [(46, 139, 87), (199, 21, 133), (25, 25, 112), (255, 215, 0)]
     
-    # create screen 500*500
+    # 创建屏幕
     screen = pygame.display.set_mode(SIZE)
     
-    # variable parameter
-    snake_list = [[100 + 12 * 4, 100],[100 + 12 * 3,100],[100 + 12 * 2, 100],[100 + 12 * 1, 100], [100,100]]
-    SNAKE_WIDTH, SNAKE_HEIGHT = 12, 12
-    snake_v = 0
-    count_time = 0
-
-    # level
+    # 定义一下关卡相关的信息
     frame = 0.05
-    level = 1
+    count_time = 0
     
-    # main loop
+    # 表达墙
+    WALL_WIDTH, WALL_HEIGHT = 30, 30
+    wall_list = [[100, 200], [600, 500], [350, 200], [500, 800]]
+    
+    # 表达食物 (x, y, color_index)
+    FOOD_WIDTH, FOOD_HEIGHT = 14, 14
+    food_list = [(150, 200, 0), (300, 500, 1), (740, 542, 2), (300, 600, 3), (700, 600, 1)]
+    
+    # 表达蛇
+    SNAKE_WIDTH, SNAKE_HEIGHT = 12, 12
+    snake_list = [[100, 100], [100 - SNAKE_WIDTH * 1, 100], [100 - SNAKE_WIDTH * 2, 100], [100 - SNAKE_WIDTH * 3, 100], [100 - SNAKE_WIDTH * 4, 100]]
+    
+    # 主循环 （帧函数）
     running = True
     pause = False
     dead = False
-    head = 'right'
+    direction = 'right'
     while running:
-        for event in pygame.event.get():
+        # 检测游戏里面发生的事件 （event）
+        for event in pygame.event.get():    
+            # 退出游戏 (如果不加这个，我们将无法通过常规的操作去关闭游戏)
             if event.type == pygame.QUIT:
                 running = False
                 break
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                pause = not pause
+            # 玩家是否按了上下左右的方向键
             elif event.type == pygame.KEYUP:
-                if event.key == K_LEFT:
-                    if head in ['up','down']:
-                        head = 'left'
-                elif event.key == K_RIGHT:
-                    if head in ['up','down']:
-                        head = 'right'
-                elif event.key == K_UP:
-                    if head in ['left','right']:
-                        head = 'up'
+                # 玩家按了方向键上
+                if event.key == K_UP:
+                    if direction in ['left', 'right']:
+                        direction = 'up'
+                # 玩家按了方向键下
                 elif event.key == K_DOWN:
-                    if head in ['left','right']:
-                        head = 'down'
-
-        # update data
+                    if direction in ['left', 'right']:
+                        direction = 'down'
+                # 玩家按了方向键左
+                elif event.key == K_LEFT:
+                    if direction in ['up', 'down']:
+                        direction = 'left'
+                # 玩家按了方向键右
+                elif event.key == K_RIGHT:
+                    if direction in ['up', 'down']:
+                        direction = 'right'
+                # 玩家按了暂停键
+                elif event.key == K_SPACE:
+                    pause = not pause
+                # 玩家按了 ESC：退出游戏
+                elif event.key == K_ESCAPE:
+                    running = False
+                    break
+            
+        # 更新数据 - 让蛇动起来
         if not pause and not dead:
-            count_time += frame*level
-            first = snake_list[0]
-            snake_list[1:] = snake_list[:-1]
-            if head == 'up':
-                snake_list[0] = [first[0],first[1]-SNAKE_WIDTH]
-            elif head == 'down':
-                snake_list[0] = [first[0],first[1]+SNAKE_WIDTH]
-            elif head == 'left':
-                snake_list[0] = [first[0]-SNAKE_WIDTH,first[1]]
-            elif head == 'right':
-                snake_list[0] = [first[0]+SNAKE_WIDTH,first[1]]
-
-        # background
+            count_time += frame
+            head_x, head_y = snake_list[0]  # 前一帧蛇头的位置
+            
+            # 让蛇的身体动起来
+            snake_list[1:] = snake_list[:-1] 
+            
+            # 让蛇的头部动起来
+            if direction == 'up':
+                snake_list[0] = [head_x, head_y - SNAKE_HEIGHT]
+            elif direction == 'down':
+                snake_list[0] = [head_x, head_y + SNAKE_HEIGHT]
+            elif direction == 'left':
+                snake_list[0] = [head_x - SNAKE_WIDTH, head_y]
+            elif direction == 'right':
+                snake_list[0] = [head_x + SNAKE_WIDTH, head_y]
+            
+        # 画背景 
         draw_background()
-        # tunnel
+        
+        # 画墙
         draw_wall()
-        # choose item
-        draw_snake()
-        # food
+        
+        # 画食物
         draw_food()
-        # point
+        
+        # 画蛇
+        draw_snake()
+        
+        # 画分数
         draw_context()
-        # pause
+        
+        # 画暂停的文字
         if not dead and pause:
             draw_pause()
-        # dead
+            
+        # 画死亡的文字
         if dead:
             draw_dead()
-        # flip
-        pygame.display.flip()
-
-        # pause 20ms
-        pygame.time.delay(int(frame/level*1000))
-
-        # check win or not
+            
+        # 检查是否死亡
         dead = check_dead()
-
+        
+        # 检查一下是否吃到了食物
         if check_food():
             add_food()
-    
+            
+        pygame.display.flip()
+        pygame.time.delay(int(frame * 1000))
     pygame.quit()
-
 ```
