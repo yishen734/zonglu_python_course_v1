@@ -1,5 +1,4 @@
 ```python3
-import random
 import pygame
 from pygame.color import THECOLORS as COLORS
 from pygame.locals import *
